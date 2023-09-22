@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Atividade 01 - Análise exploratoria de dados</title>
+<style type="text/css">
+/**
+ * Prism.s theme ported from highlight.js's xcode style
+ */
+pre code {
+  padding: 1em;
+}
+.token.comment {
+  color: #007400;
+}
+.token.punctuation {
+  color: #999;
+}
+.token.tag,
+.token.selector {
+  color: #aa0d91;
+}
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol {
+  color: #1c00cf;
+}
+.token.property,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin {
+  color: #c41a16;
+}
+.token.inserted {
+  background-color: #ccffd8;
+}
+.token.deleted {
+  background-color: #ffebe9;
+}
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+  color: #9a6e3a;
+}
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+  color: #836c28;
+}
+.token.function,
+.token.class-name {
+  color: #DD4A68;
+}
+.token.regex,
+.token.important,
+.token.variable {
+  color: #5c2699;
+}
+.token.important,
+.token.bold {
+  font-weight: bold;
+}
+.token.italic {
+  font-style: italic;
+}
+</style>
+<style type="text/css">
+body {
+  font-family: sans-serif;
+  max-width: 800px;
+  margin: auto;
+  padding: 1em;
+  line-height: 1.5;
+  box-sizing: border-box;
+}
+body, .footnotes, code { font-size: .9em; }
+li li { font-size: .95em; }
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+pre, img { max-width: 100%; }
+pre, pre:hover {
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+pre code {
+  display: block;
+  overflow-x: auto;
+}
+code { font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace; }
+:not(pre) > code, code[class] { background-color: #F8F8F8; }
+code.language-undefined, pre > code:not([class]) {
+  background-color: inherit;
+  border: 1px solid #eee;
+}
+table {
+  margin: auto;
+  border-top: 1px solid #666;
+}
+table thead th { border-bottom: 1px solid #ddd; }
+th, td { padding: 5px; }
+thead, tfoot, tr:nth-child(even) { background: #eee; }
+blockquote {
+  color: #666;
+  margin: 0;
+  padding-left: 1em;
+  border-left: 0.5em solid #eee;
+}
+hr, .footnotes::before { border: 1px dashed #ddd; }
+.frontmatter { text-align: center; }
+#TOC .numbered li { list-style: none; }
+#TOC .numbered { padding-left: 0; }
+#TOC .numbered ul { padding-left: 1em; }
+table, .body h2 { border-bottom: 1px solid #666; }
+.body .appendix, .appendix ~ h2 { border-bottom-style: dashed; }
+.footnote-ref a::before { content: "["; }
+.footnote-ref a::after { content: "]"; }
+.footnotes::before {
+  content: "";
+  display: block;
+  max-width: 20em;
+}
+
+@media print {
+  body {
+    font-size: 12pt;
+    max-width: 100%;
+  }
+  tr, img { page-break-inside: avoid; }
+}
+@media only screen and (min-width: 992px) {
+  pre { white-space: pre; }
+}
+</style>
+</head>
+<body>
+<div class="include-before">
+</div>
+<div class="frontmatter">
+<div class="title"><h1>Atividade 01 - Análise exploratoria de dados</h1></div>
+<div class="author"><h2></h2></div>
+<div class="date"><h3></h3></div>
+</div>
+<div class="body">
+<div id="TOC">
+<ul>
+<li><a href="#atividade-01-an-lise-exploratoria-de-dados">Atividade 01 - Análise exploratoria de dados</a>
+<ul>
+<li><a href="#thalles-cotta-fontainha">Thalles Cotta Fontainha</a></li>
+<li><a href="#2023-09-21">2023-09-21</a></li>
+<li><a href="#frequencies-age-rfsstat">Frequencies: age, rfsstat</a></li>
+<li><a href="#two-way-contingency-table-age-rfsstat">Two-Way Contingency Table: age, rfsstat</a></li>
+<li><a href="#resumos-num-ricos-ebmt3">Resumos Numéricos: ebmt3</a></li>
+<li><a href="#bar-plot-rfsstat">Bar Plot: rfsstat</a></li>
+<li><a href="#boxplot-rfstime-dissub">Boxplot: rfstime ~ dissub</a></li>
+<li><a href="#histogram-rfstime">Histogram: rfstime</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<!-- R Commander Markdown Template -->
+<h1 id="atividade-01-an-lise-exploratoria-de-dados">Atividade 01 - Análise exploratoria de dados</h1>
+<h3 id="thalles-cotta-fontainha">Thalles Cotta Fontainha</h3>
+<h3 id="2023-09-21">2023-09-21</h3>
+<h4 id="exerc-cio-1">(Exercício 1):</h4>
+<pre><code class="language-r">&gt; load(&quot;C:/Users/F193865.STARONE/Downloads/Conjuntos_de_dados (1)/ebmt3.RData&quot;)
+</code></pre>
+<h3 id="frequencies-age-rfsstat">Frequencies: age, rfsstat</h3>
+<pre><code class="language-r">&gt; local({
++   .Table &lt;- with(ebmt3, table(age))
++   cat(&quot;\ncounts:\n&quot;)
++   print(.Table)
++   cat(&quot;\npercentages:\n&quot;)
++   print(round(100*.Table/sum(.Table), 2))
++ })
+</code></pre>
+<pre><code>
+counts:
+age
+ &lt;=20 20-40   &gt;40 
+  419  1057   728 
+
+percentages:
+age
+ &lt;=20 20-40   &gt;40 
+19.01 47.96 33.03 
+</code></pre>
+<pre><code class="language-r">&gt; local({
++   .Table &lt;- with(ebmt3, table(rfsstat))
++   cat(&quot;\ncounts:\n&quot;)
++   print(.Table)
++   cat(&quot;\npercentages:\n&quot;)
++   print(round(100*.Table/sum(.Table), 2))
++ })
+</code></pre>
+<pre><code>
+counts:
+rfsstat
+       censura morte/recidiva 
+          1363            841 
+
+percentages:
+rfsstat
+       censura morte/recidiva 
+         61.84          38.16 
+</code></pre>
+<h4 id="exerc-cio-2-o-percentual-de-cada-faixa-et-ria-da-popula-o-apresenta-19-01-com-idade-lt-20-47-96-com-idade-entre-20-40-anos-e-33-03-com-idade-gt-40-anos">(Exercício 2): O percentual de cada faixa etária da população apresenta é 19.01% com idade &lt;=20, 47.96% com idade entre 20-40 anos e 33.03% com idade &gt;40 anos.</h4>
+<pre><code class="language-r">&gt; library(abind, pos=16)
+</code></pre>
+<h3 id="two-way-contingency-table-age-rfsstat">Two-Way Contingency Table: age, rfsstat</h3>
+<pre><code class="language-r">&gt; local({
++   .Table &lt;- xtabs(~age+rfsstat, data=ebmt3)
++   cat(&quot;\nFrequency table:\n&quot;)
++   print(.Table)
++   cat(&quot;\nRow percentages:\n&quot;)
++   print(rowPercents(.Table))
++ })
+</code></pre>
+<pre><code>
+Frequency table:
+       rfsstat
+age     censura morte/recidiva
+  &lt;=20      295            124
+  20-40     686            371
+  &gt;40       382            346
+
+Row percentages:
+       rfsstat
+age     censura morte/recidiva Total Count
+  &lt;=20     70.4           29.6   100   419
+  20-40    64.9           35.1   100  1057
+  &gt;40      52.5           47.5   100   728
+</code></pre>
+<h4 id="exerc-cio-3-o-percentual-de-pacientes-que-sobreviveram-em-cada-faixa-etaria-e-29-6-para-menor-ou-igual-20-anos-entre-20-e-40-anos-sao-64-9-e-maiores-que-40-anos-52-5">(Exercício 3): O percentual de pacientes que sobreviveram em cada faixa etaria e: 29.6% para menor ou igual à 20 anos. Entre 20 e 40 anos sao 64.9% e maiores que 40 anos 52.5%.</h4>
+<pre><code class="language-r">&gt; library(e1071, pos=17)
+</code></pre>
+<h3 id="resumos-num-ricos-ebmt3">Resumos Numéricos: ebmt3</h3>
+<pre><code class="language-r">&gt; numSummary(ebmt3[,c(&quot;prtime&quot;, &quot;rfstime&quot;), drop=FALSE], groups=ebmt3$age, statistics=c(&quot;mean&quot;, &quot;sd&quot;, &quot;quantiles&quot;, 
++   &quot;CV&quot;), quantiles=c(0,.25,.5,.75,1))
+</code></pre>
+<pre><code>
+Variable: prtime 
+          mean       sd   IQR       0%   25% 50%    75% 100%    n
+&lt;=20  389.2912 633.2222 397.5 0.030425 26.00  47 423.50 2578  419
+20-40 466.8714 690.9332 708.0 0.030425 26.00  56 734.00 2689 1057
+&gt;40   426.0810 649.4042 574.0 4.000000 24.75  50 598.75 2767  728
+
+Variable: rfstime 
+          mean       sd     IQR       0%    25% 50%    75% 100%    n
+&lt;=20  992.4535 728.4596 1368.50 0.030425 262.50 916 1631.0 2578  419
+20-40 959.9716 746.0292 1283.00 0.030425 241.00 865 1524.0 2824 1057
+&gt;40   850.8558 720.6033 1268.25 4.000000 172.25 703 1440.5 2812  728
+</code></pre>
+<h4 id="exerc-cio-4">(Exercício 4):</h4>
+<h4 id="em-prtime-a-m-dia-mean-para-idade-lt-20-389-2912">Em prtime; A média (mean) para idade &lt;= 20 : 389.2912</h4>
+<h4 id="em-prtime-o-desvio-padr-o-sd-para-idade-lt-20-633-2222">Em prtime; O desvio padrão (sd) para idade &lt;= 20 : 633.2222</h4>
+<h4 id="em-prtime-a-m-dia-mean-para-idade-entre-20-40-466-8714">Em prtime; A média (mean) para idade entre 20-40 : 466.8714</h4>
+<h4 id="em-prtime-o-desvio-padr-o-sd-para-idade-entre-20-40-690-9332">Em prtime; O desvio padrão (sd) para idade entre 20-40 : 690.9332</h4>
+<h4 id="em-prtime-a-m-dia-mean-para-idade-entre-gt-40-426-0810">Em prtime; A média (mean) para idade entre &gt; 40 : 426.0810</h4>
+<h4 id="em-prtime-o-desvio-padr-o-sd-para-idade-gt-40-649-4042">Em prtime; O desvio padrão (sd) para idade &gt; 40 : 649.4042</h4>
+<h4 id="e">e</h4>
+<h4 id="em-rfstime-a-m-dia-mean-para-idade-lt-20-992-4535">Em rfstime; A média (mean) para idade &lt;= 20 : 992.4535</h4>
+<h4 id="em-rfstime-o-desvio-padr-o-sd-para-idade-lt-20-728-4596">Em rfstime; O desvio padrão (sd) para idade &lt;= 20 : 728.4596</h4>
+<h4 id="em-rfstime-a-m-dia-mean-para-idade-entre-20-40-959-9716">Em rfstime; A média (mean) para idade entre 20-40 : 959.9716</h4>
+<h4 id="em-rfstime-o-desvio-padr-o-sd-para-idade-entre-20-40-746-0292">Em rfstime; O desvio padrão (sd) para idade entre 20-40 : 746.0292</h4>
+<h4 id="em-rfstime-a-m-dia-mean-para-idade-entre-gt-40-850-8558">Em rfstime; A média (mean) para idade entre &gt; 40 : 850.8558</h4>
+<h4 id="em-rfstime-o-desvio-padr-o-sd-para-idade-gt-40-720-6033">Em rfstime; O desvio padrão (sd) para idade &gt; 40 : 720.6033</h4>
+<h3 id="bar-plot-rfsstat">Bar Plot: rfsstat</h3>
+<pre><code class="language-r">&gt; with(ebmt3, Barplot(rfsstat, by=tcd, style=&quot;parallel&quot;, legend.pos=&quot;above&quot;, xlab=&quot;rfsstat&quot;, ylab=&quot;Percent&quot;, 
++   scale=&quot;percent&quot;, label.bars=TRUE))
+</code></pre>
+<div class="figure">
+<img src="data:image/png;base64,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" alt="plot of chunk unnamed-chunk-8" width="750" />
+<p class="caption">plot of chunk unnamed-chunk-8</p>
+</div>
+<h4 id="exercicio-5">(Exercicio 5):</h4>
+<h4 id="no-grafico-esqueda-entre-o-grupo-censura-90-possuem-no-tcd-enquanto-10-possuem">No grafico à esqueda entre o grupo “censura”: 90% possuem “no TCD”, enquanto 10% possuem.</h4>
+<h4 id="no-grafico-direita-entre-o-grupo-morte-recidiva-84-possuem-no-tcd-enquanto-16-possuem">No grafico à direita entre o grupo “morte/recidiva”: 84% possuem “no TCD”, enquanto 16% possuem.</h4>
+<h3 id="boxplot-rfstime-dissub">Boxplot: rfstime ~ dissub</h3>
+<pre><code class="language-r">&gt; Boxplot(rfstime ~ dissub, data=ebmt3, id=list(method=&quot;none&quot;))
+</code></pre>
+<div class="figure">
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAkAAAAJACAMAAABSRCkEAAAAmVBMVEUAAAAAADoAAGYAOjoAOmYAOpAAZrY6AAA6ADo6AGY6OpA6ZpA6ZrY6kJA6kNtmAABmADpmAGZmOgBmOjpmOpBmZjpmZmZmZrZmtv+QOgCQOjqQOmaQZpCQkGaQtpCQ27aQ29uQ2/+2ZgC2Zjq2tma225C2/7a2/9u2///T09PbkDrbkGbb/7bb////tmb/25D//7b//9v///+yHwTvAAAACXBIWXMAAAsSAAALEgHS3X78AAAQI0lEQVR4nO2dC1sjtxmFh6SYQrdm6WWLs22zOE1L3fj6/39cPWMb2AdjSXNGmk/S+z7JQxKtxJk5bwaJi2l2AALN2AEgbxAIJBAIJBAIJBAIJBAIJBAIJBAIJBAIJBAIJBAIJBAIJBAIJBAIJBAIJBAIJBAIJBAIJBAIJBAIJBAIJBAIJBAIJBAIJBAIJBAIJBAIJBAIJBAIJBAIJBAIJBAIJBAIJBAIJBAIJBAIJBAIJBAIJBAIJBAIJBAIJBAIJBAIJBAIJBAIJBAIJBAIJBAIJBAIJBAIJBAIJBAIJBAIJBAIJBAIJBAIJBAIJBAIJBSBGqiBiAIJcyEXEAgkEAgkEAgkEAgkEAgkEAgkEAgkEAgkEAgkEAgkEAgkEAgkEAgkEAgk7AoU8ZtUYDjsCjTi4uAPAoEEAoEEAoFErgKBERAIJBAIJHIVCDvfMuLnzBCofMYsAoEKAIFSL14YCJR68cJAILALAoEEAoFErgJhpz/sgVIvXhgIlHrxwkCg1IsXBgKlXrwwEAjsgkAggUAgkatA2OkPe6DUixcGAqVevDAQKPXihYFAqRcvDAQCuyAQSCAQSOQqEHb6wx4o9eKFYVug9U33440/PPeYKzCWQDm+bpppgbazx+7t6noZPFfB5hOowlSqQJuH5+/ehsxVqLCq3pgWaKwnkE245MDhPZv7UfZANuGSA4ejzYVcyFUg7PTH9B6otmN8jpgWiGP8WypMxTF+SCpMxRNoSCpMxTF+SLjkwOFoczOFSw4cPj9n5K8dQkqG2ES3H8Xeb4Fq3APZxPQeaC9QdwBbfwqfq4BA/lgXaH235Bh/oMJUskD3V9++tk+gO47xVabSN9HbWTPZrfhSRkuFqTjGDwmXHDgcbW6mcMmBw7vuq/FXT+k30WCEIb4Wtp1NOYUZxvQe6CDOfIJAdjEt0PGr8YsfbxGoylQDfDV+2r5ZvD/HI5ARbAsUZ+64i/emwlS5CmQTLjlwONrcTOGSA4ejzYVcyFUg7PSHPVDqxQsDgVIv3psKUyHQkFSYCoGGpMJUuQpkEy45cDja3EzhkgOHo82FXMhVIOz0hz1Q6sULA4FSL96bClMh0JBUmAqBhqTCVLkKZBMuOXA42txM4ZIDh6PNhVzIVSDs9Ic9UOrFCwOBUi/emwpTIdCQVJgKgYakwlS5CmQTLjlwONrcTOGSA4ejzYVcyFUg7PSHPVDqxQsDgVIv3psKUyHQkFSYCoGGpMJUuQpkEy45cDja3EzhkgOHo82FXMhVIOz0hz1Q6sULA4FSL96bClMh0JBUmAqBhqTCVLkKZBMuOXA42txM4ZIDh6PNhVzIVSDs9Ic9UOrFCwOBUi/emwpTyQKtb5oWfu13S4WpVIGOv7Fwt7peBs9VqLCq3pgW6PS7UvmtzS1ccuDweE8gm3DJgcO79nemjrIHAiNwCisf03ugSHPHXbwwbAvEMf4NFabKdRNdYVW9MS3QWMf4CqvqjWmBOMa/hUsOHN5xjP8OLjlwONpcyIUIAjUnegXyfScxFy8M03sgjvH2MS0Qx/i3VJiKY/yQVJiKJ9CQVJiKY/yQcMmBw9HmZgqXHDgcbS7kwhDH+KsnNtGWMb0HajfR29kUgQxjWqCDOPMJArVUmGqgY/zix1sEqjLVAMf4aftm8f4cj0BGsC1QnLmZwiUHDkebmylccuBwtLmQC7kKhJ3+sAdKvXhhIFDqxXtTYSoEGpIKUyHQkFSYKleBbMIlBw5Hm5spXHLgcLS5kAu5CoSd/rAHSr14YSBQ6sV7U2EqBBqSClMh0JBUmCpXgWzCJQcOR5ubKVxy4HC0uZALuQqEnf6wB0q9eGEgUOrFe1NhKgQakgpTIdCQVJgqV4FswiUHDkebmylccuBwtLmQC7kKhJ3+sAdKvXhhIFDqxXtTYSoEGpIKUyHQkFSYKleBbMIlBw5Hm5spXHLgcLS5kAu5CoSd/rAHSr14YSBQ6sV7U2EqBBqSClMh0JBUmCpXgWzCJQcOR5ubKVxy4HC0uZALuQqEnf6wB0q9eGEgUOrFe1NhKgQakgpTyQKtb0b5td8VVtUb0wIdf2PhbnW9DJ5bHlxy4PDrb2tO/TtTbcIlBw7zBKoeeQ+0uWcPZBzTe6BIc8ddvDAQKPXivakwFcf4IakwlZ9A21lz/dvnpzN/YKxNdIVV9WZ8gbaz6fpuecYRjvHfwyWfH97bsRfojCPaE6gZC58b0wsEOj98eAItzj2BlGN8899xyLFms/+zee+BmuasP/2XRqAQzN6rCMd4f3mt3hSDmL1XfgKtOiHOfJjqNs/tR7Ezj6cKBYq4stV75beJPnuCPww9PHeb6/Wn0KUN35TeIND54bPnr91paL+/7neMN3tTeoNAHwwvph/9gc391bev7RPorscx3uRNGem049gy2rxX7pZPAn24B+pOaJPdqpxjPKn8U7lbdu6B+i9t9aaQyj+Vu2XnHqj/0lZvCqn8U7lbdu6B+i9t9aaQyj+Vu+XjE+jDL1cIS1u9KaTyT+Vu2f1N9ffHM8R7uxCo+FTult2f2NjOPvrwhkDFp3K33A5vHv596UPYh0c0BCo+lbvlqN8TbfOmkMo/lbvlt8f40MM8AhWfyt1y9yHstE8O/IYgBCo+lbtlPpFIKqll9kCkklo+fSb6erlomkfXYkFLW70ppPJP5W755Yup+7/Wt2yiSRXY8sseaP8MQiBSBbf88v1AV08rPoSRKrjlw2ei+5zBEKiCVO6Wj1/K4BhPqn4td8PzD7/grixt9aaQyj+Vu2U+kUgqqWUEIpXU8mF4+xPfVE+qXi3zLa2kklrma2GkklpGIFJJLSMQqaSWEYhUUssIRCqpZQQildQyApFKahmBSCW1jECkklpGIFJJLSMQqaSWEYhUUssIRCqpZQQildQyApFKahmBSCW1jECkklpGIFJJLSMQqaSWEYhUUssIRCqpZQQildQyApFKahmBSCW1jECkklpGIFJJLSMQqaSWEYhUUssIRCqpZQQildSyW6D1zUcv/YJAxadyt+ycv50dXvx39f43sSBQ8ancLTvnn1797syr4CFQ8ancLfMEIpWjRGl4d+nl7xCo+FTuljmFkUpqGYFIJbXMMZ5UjhKlYTbRdadyt8wxnlSOEqVhnkB1p3K3zDGeVI4SpWFtrs2bQir/VO6W+wjUnHD+QZM3hVT+qXYc40mlpHK3zCaaVI4SpWGO8XWncrfME4hUjhKl4R3H+KpTuVvmGE8qqWUEIpXUMgKRSmoZgUgltew+xt8fP+38fheNQMWncrfsfgJtZ9O+c23eFFL5p3K37PEhbPP5qedcmzeFVP6p3C2zByKV1DICkUpqGYFIJbWMQKSSWkYgUkktI5CVVGMhtoxAVlIh0Jk/YLMqm6kQ6MwfsFkVqbxTuVtGIFJJLSMQqaSWEYhUUssIRCqpZQQildQyApFKajmuQCY/t2GzKpup3C0jkJGqbKZyt4xARqqymcrdMnsgUkktIxCppJYRiFRSyzUKxM7M+165W0YgBJJaRiAEklquUSBSeadyt4xApJJaRiBSSS0jEKmklhGIVFLLCEQqqWUEIpXUMgKRSmoZgUgltYxApJJaRiBSSS0jEKmklhGIVFLLCEQqqWUEIpXUMgKRSmoZgUgltYxApJJaRiBSSS0jEKmklhGIVFLLCEQqqWUEIpXUMgKRSmoZgUgltYxApJJaRiBSSS27BVrfdD/Y/f6XNiNQ+ancLTvnb2eP3dvV9TJ4rs2bQir/VO6WnfM3D8/fvQ2Za/OmkMo/lbtlnkCkcpQoDe/Z3LMHqjaVu2VOYaSSWkYgUkktc4wnlaNEaZhNdN2p3C33Ocb7vWqk2ZtCKv9UO55ApFJSuVvmGE8qR4nSsDbX5k0hlX8qd8sIRCqpZa9NdPtR7P0WCIHKT+Vu2Ueg7gC2/hQ+1+ZNIZV/KnfLPgKt75Z8Nb7OVO6W3QLdX3372j6B7jjG15fK3bLHJno7aya7Fcf4GlO5W+YURiqpZQQildQyApFKahmBSCW1jECkklpGIFJJLSMQqaSWEYhUUssIRCqpZQQildQyApFKahmBSCW1jECkklpGIFJJLSMQqaSWEYhUUssIRCqpZQQildQyApFKahmBSCW1jECkklpGIFJJLSMQqaSWEYhUUssIRCqpZQSykmosxJYRyEgqhXgruxdHICOpFBAoaVU2UykgUNKqbKZSQKCkVdlMpYBASauymcosCJRHKrMgUB6pzDKqQCY/OVaeQMXugRQi3m4EGnBxBEIgafEaBTL5gVW6omgruxevUCCFClMh0JDYTBWVXAUCIyAQSCBQ+bAHSr14bypMhUBDUmEqBBqSClMh0JBUmAqBhsRmqqjkKhAYAYFAAoHKhz1Q6sV7U2EqBBqSClMh0JBUmAqBhqTCVAg0JDZTRSVXgcAICAQSCFQ+7IFSL96bClMh0JBUmEoWaH3T/VDTD8895gpUWFVvTAu0nT12b1fXy+C5ChVWden9jvcDjapAm4fn796+vRoxmc2f8jSZakRyfQKBEeQ90Oa++58r9R4IjJDrKQyMgEAggUAggUAggUAggUAggUAggUAggUAggUAggUAggUAggUAgEVMgqIF4AkXFZjBSWXrfF7EZjFSW3vdFbAYjlaX3fRGbwUhl6X1fxGYwUll63xexGYxUlt73RWwGI5Wl9w0FgEAggUAggUAggUAggUAggUAggUAggUAggUAgYUygzeen9lUZJ/t/nP/wvL59/6JEo3CIdUhjJdSqaZrr5eg3y5hAqy/TfUW//8Nyt/nzrR2BDrFMCbRoX/Frfr0c+2bZEmj7089/2f9PdfvXp936ix2BTrEMCdQ9E9vXHxz7ZtkSaH23nD/uK/rX4+5//7Qj0CmWIYFeXrJy7JtlS6DFdLea7O/Jr5+2X3+1I9ApliWBJsd/GPtmmRJoO2vaV/Nc3/7n77/9bW1GoJdYhgTaPxSP/zDyzTIlUHdX5vsP68+//GNqR6DXWN2/mQj1Zg807s0yJdCifUnq1WR/K1ZXT3YEeo3V/puVUKdT2Mg3y5JA26/tLdh8PuwI27+6X9MxcU5MFOuQxkao188DjXyzLAkEGYJAIIFAIIFAIIFAIIFAIIFAIIFAIIFAIIFAIIFAIIFAIIFAIIFAIIFAIIFAIIFAIIFAIIFAIIFAIIFAlzn84Mz5sflj2iwmQaDL7AX6cAyBdgh0kc1987s/dU+gVfujqbvjm/Y/tH/PvzRN9Q4h0AXm070yrUCbh+fdYrI7vnkRqPuxvrFDjgwCfUzry2EPdPhB4uPPE78K9MiHMQS6QPd4OfxM/PqmuepeO619cxLolycEQqALvD6B2n87viLP6vBx6/gEurTHrgMEusDLHqiVZ//38U37kax9bYP5xMorLYwIAl1gOzudwuaHU9jxzaJp/vjQncKunsbOODYIBBIIBBIIBBIIBBIIBBIIBBIIBBIIBBIIBBIIBBIIBBIIBBIIBBIIBBIIBBIIBBIIBBIIBBL/Bx7nWzneaPHiAAAAAElFTkSuQmCC" alt="plot of chunk unnamed-chunk-9" width="750" />
+<p class="caption">plot of chunk unnamed-chunk-9</p>
+</div>
+<h4 id="resposta-6-os-boxplots-mostram-a-subclassifica-o-da-doen-a-no-eixo-x-dado-por-cml-gt-aml-gt-all">(Resposta 6): Os boxplots mostram a subclassificação da doença, no eixo x, é dado por: CML &gt; AML &gt; ALL</h4>
+<h3 id="histogram-rfstime">Histogram: rfstime</h3>
+<pre><code class="language-r">&gt; with(ebmt3, Hist(rfstime, scale=&quot;frequency&quot;, breaks=&quot;Sturges&quot;, col=&quot;darkgray&quot;))
+</code></pre>
+<div class="figure">
+<img src="data:image/png;base64,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" alt="plot of chunk unnamed-chunk-10" width="750" />
+<p class="caption">plot of chunk unnamed-chunk-10</p>
+</div>
+<h4 id="exerc-cio-7">(Exercício 7):</h4>
+<h4 id="observado-pelo-histograma-que-h-uma-contagem-de-frequencias-maiores-entre-0-e-500-do-eixo-rfstime">Observado pelo histograma que há uma contagem de frequencias maiores entre 0 e 500 do eixo rfstime.</h4>
+<h4 id="sabendo-que-rfstime-o-tempo-em-dias-desde-o-transplante-at-a-cecidiva-ou-morte-ou-ultimo-acompanhamento">Sabendo que rfstime é o tempo em dias desde o transplante até a cecidiva ou morte ou ultimo acompanhamento.</h4>
+</div>
+<div class="include-after">
+</div>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-core.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/autoloader/prism-autoloader.min.js" defer></script>
+</body>
+</html>
