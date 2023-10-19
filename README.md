@@ -51,9 +51,10 @@ local({
   cat("\npercentages:\n")
   print(round(100*.Table/sum(.Table), 2))
 })
-
+})
+```
 ![ex2.1](https://github.com/thallescotta/R_comander/blob/master/figure/2.1.png)
-
+```{r}
 local({
   .Table <- with(ebmt3, table(rfsstat))
   cat("\ncounts:\n")
