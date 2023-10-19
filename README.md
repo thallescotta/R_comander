@@ -1,7 +1,7 @@
 ---
 title: "Atividade 01: Análise exploratoria de dados"
 author: "Thalles Cotta Fontainha"
-date: "`r Sys.Date()`"  # Uses current date
+date: "19/10/2023"  # Uses current date
 ---
 #### Disciplina: Estatística Aplicada à Projetos de Pesquisa
 
