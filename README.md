@@ -52,7 +52,7 @@ local({
   print(round(100*.Table/sum(.Table), 2))
 })
 
-![ex2.1](https://github.com/thallescotta/R_comander/blob/master/figure/ex2.1)
+![ex2.1](https://github.com/thallescotta/R_comander/blob/master/figure/ex2.1.png)
 
 local({
   .Table <- with(ebmt3, table(rfsstat))
@@ -62,7 +62,7 @@ local({
   print(round(100*.Table/sum(.Table), 2))
 })
 ```
-![ex2.2](https://github.com/thallescotta/R_comander/blob/master/figure/ex2.2)
+![ex2.2](https://github.com/thallescotta/R_comander/blob/master/figure/ex2.2.png)
 
 
 #### (Resposta 2): No arquivo ebmt3.RData a distribuição percentual da população em diferentes faixas etárias é a seguinte: 19,01% têm idade igual ou inferior a 20 anos, 47,96% têm idade entre 20 e 40 anos, e 33,03% têm idade superior a 40 anos.
