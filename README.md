@@ -51,6 +51,9 @@ local({
   cat("\npercentages:\n")
   print(round(100*.Table/sum(.Table), 2))
 })
+
+![ex2.1](https://github.com/thallescotta/R_comander/blob/master/figure/ex2.1)
+
 local({
   .Table <- with(ebmt3, table(rfsstat))
   cat("\ncounts:\n")
@@ -59,6 +62,8 @@ local({
   print(round(100*.Table/sum(.Table), 2))
 })
 ```
+![ex2.2](https://github.com/thallescotta/R_comander/blob/master/figure/ex2.2)
+
 
 #### (Resposta 2): No arquivo ebmt3.RData a distribuição percentual da população em diferentes faixas etárias é a seguinte: 19,01% têm idade igual ou inferior a 20 anos, 47,96% têm idade entre 20 e 40 anos, e 33,03% têm idade superior a 40 anos.
 
@@ -84,6 +89,8 @@ local({
 })
 ```
 
+![ex3](https://github.com/thallescotta/R_comander/blob/master/figure/ex3)
+
 #### (Resposta 3): Sabendo que "rfstime" é Tempo em dias desde o transplante até a recidiva ou morte ou último acompanhamento (tempo de sobrevivência livre de recidiva). 
 #### Pacientes com idade <=20 anos: 70.4% sobreviveram (censura), 29.6% enfrentaram morte ou recidiva.
 #### Pacientes com idade entre 20-40 anos: 64.9% sobreviveram, 35.1% enfrentaram morte ou recidiva.
@@ -100,6 +107,8 @@ library(e1071, pos=17)
 ```{r}
 numSummary(ebmt3[,c("prtime", "rfstime"), drop=FALSE], groups=ebmt3$age, statistics=c("mean", "sd", "IQR", "quantiles"), quantiles=c(.25,.75))
 ```
+
+![ex4](https://github.com/thallescotta/R_comander/blob/master/figure/ex4)
 
 #### (Resposta 4): 
 #### Em prtime; A média (mean) para idade <= 20 : 389.2912  
@@ -136,7 +145,7 @@ with(ebmt3, Barplot(rfsstat, by=tcd, style="parallel", legend.pos="above", xlab=
 ```{r}
 Boxplot(rfstime ~ dissub, data=ebmt3, id=list(method="none"), main="Boxplot do Exercício 6")
 ```
-
+![ex6](https://github.com/thallescotta/R_comander/blob/master/figure/ex6)
 
 #### (Resposta 6): O boxplot é uma ferramenta visual útil para entender como o tempo de sobrevivência livre de recidiva (rfstime) varia entre diferentes subtipos de leucemia, como AML, ALL e CML. Ele mostra a mediana, quartis e valores extremos, oferecendo uma visão completa da distribuição desses dados. Ao observar o boxplot, os profissionais de saúde podem identificar facilmente casos incomuns em cada subtipo, fornecendo insights valiosos que podem exigir uma atenção especial na análise e tomada de decisões clínicas.
 
@@ -150,7 +159,7 @@ Boxplot(rfstime ~ dissub, data=ebmt3, id=list(method="none"), main="Boxplot do E
 ```{r}
 with(ebmt3, Hist(rfstime, scale="frequency", breaks="Sturges", col="darkgray", main="Histograma de frequência relativa da variável rfstime"))
 ```
-
+![ex7](https://github.com/thallescotta/R_comander/blob/master/figure/ex7)
 
 #### (Resposta 7): No histograma, nota-se que a maioria das ocorrências (frequência) está concentrada entre 0 e 500 dias no eixo do tempo de sobrevivência livre de recidiva (rfstime), representado no eixo horizontal (x). Este eixo mostra o tempo desde o transplante até a recidiva, morte ou último acompanhamento. O eixo vertical (y) reflete a quantidade de ocorrências dentro dessa faixa de tempo. 
 
