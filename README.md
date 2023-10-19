@@ -125,7 +125,7 @@ numSummary(ebmt3[,c("prtime", "rfstime"), drop=FALSE], groups=ebmt3$age, statist
 ```{r}
 with(ebmt3, Barplot(rfsstat, by=tcd, style="parallel", legend.pos="above", xlab="rfsstat", ylab="Percent", main="Exercicio 5", scale="percent", label.bars=TRUE))
 ```
-![ex5](/figure/ex5.png)
+![ex5](figure/ex5.png)
 
 #### (Resposta 5): Sabendo que "tcd": depleção de células T ("No TCD", "TCD"). Entre o grupo "censura", 90% tinham "No TCD" enquanto 10% tinham "TCD". Já em "morte/recidiva" 84% tinham "No TCD" enquanto 16% tinham "TCD".
 
