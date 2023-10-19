@@ -52,7 +52,7 @@ local({
   print(round(100*.Table/sum(.Table), 2))
 })
 
-![ex2.1](https://github.com/thallescotta/R_comander/blob/master/figure/ex2.1.png)
+![ex2.1](https://github.com/thallescotta/R_comander/blob/master/figure/2.1.png)
 
 local({
   .Table <- with(ebmt3, table(rfsstat))
@@ -62,7 +62,7 @@ local({
   print(round(100*.Table/sum(.Table), 2))
 })
 ```
-![ex2.2](https://github.com/thallescotta/R_comander/blob/master/figure/ex2.2.png)
+![ex2.2](https://github.com/thallescotta/R_comander/blob/master/figure/2.2.png)
 
 
 #### (Resposta 2): No arquivo ebmt3.RData a distribuição percentual da população em diferentes faixas etárias é a seguinte: 19,01% têm idade igual ou inferior a 20 anos, 47,96% têm idade entre 20 e 40 anos, e 33,03% têm idade superior a 40 anos.
@@ -89,7 +89,7 @@ local({
 })
 ```
 
-![ex3](https://github.com/thallescotta/R_comander/blob/master/figure/ex3)
+![ex3](https://github.com/thallescotta/R_comander/blob/master/figure/3)
 
 #### (Resposta 3): Sabendo que "rfstime" é Tempo em dias desde o transplante até a recidiva ou morte ou último acompanhamento (tempo de sobrevivência livre de recidiva). 
 #### Pacientes com idade <=20 anos: 70.4% sobreviveram (censura), 29.6% enfrentaram morte ou recidiva.
@@ -108,7 +108,7 @@ library(e1071, pos=17)
 numSummary(ebmt3[,c("prtime", "rfstime"), drop=FALSE], groups=ebmt3$age, statistics=c("mean", "sd", "IQR", "quantiles"), quantiles=c(.25,.75))
 ```
 
-![ex4](https://github.com/thallescotta/R_comander/blob/master/figure/ex4)
+![ex4](https://github.com/thallescotta/R_comander/blob/master/figure/4)
 
 #### (Resposta 4): 
 #### Em prtime; A média (mean) para idade <= 20 : 389.2912  
