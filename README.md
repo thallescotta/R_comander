@@ -90,7 +90,7 @@ local({
 })
 ```
 
-![ex3](https://github.com/thallescotta/R_comander/blob/master/figure/3)
+![ex3](https://github.com/thallescotta/R_comander/blob/master/figure/3.png)
 
 #### (Resposta 3): Sabendo que "rfstime" é Tempo em dias desde o transplante até a recidiva ou morte ou último acompanhamento (tempo de sobrevivência livre de recidiva). 
 #### Pacientes com idade <=20 anos: 70.4% sobreviveram (censura), 29.6% enfrentaram morte ou recidiva.
@@ -109,7 +109,7 @@ library(e1071, pos=17)
 numSummary(ebmt3[,c("prtime", "rfstime"), drop=FALSE], groups=ebmt3$age, statistics=c("mean", "sd", "IQR", "quantiles"), quantiles=c(.25,.75))
 ```
 
-![ex4](https://github.com/thallescotta/R_comander/blob/master/figure/4)
+![ex4](https://github.com/thallescotta/R_comander/blob/master/figure/4.png)
 
 #### (Resposta 4): 
 #### Em prtime; A média (mean) para idade <= 20 : 389.2912  
