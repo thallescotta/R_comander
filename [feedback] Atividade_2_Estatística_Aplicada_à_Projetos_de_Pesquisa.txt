@@ -1,0 +1,36 @@
+Atividade_2_Estatística_Aplicada_à_Projetos_de_Pesquisa
+
+
+TAREFA 2 - COMPARAÇÃO DE MÉDIAS
+Data de entrega	quinta, 30 Nov 2023, 23:59
+Tempo restante	A tarefa foi enviada 6 dias 2 horas adiantado
+Última modificação	sexta, 24 Nov 2023, 21:08
+
+ 
+Atividade2-dupla.pdf Atividade2-dupla.pdf24 novembro 2023, 21:08
+
+Comentários sobre o envio	
+Comentários (1)
+
+Imagem de Thalles Cotta FontainhaThalles Cotta Fontainha - Sex, 24 Nov 2023, 21:09
+https://github.com/thallescotta/R_comander/blob/master/Atividade_2_Estat%C3%ADstica_Aplicada_%C3%A0_Projetos_de_Pesquisa.ipynb
+
+Adicionar um comentário...
+Salvar comentário | Cancelar
+Você ainda pode fazer alterações no seu envio
+
+
+
+Feedback
+Nota	9,00 / 10,00
+Avaliado em	sexta, 1 Dez 2023, 11:49
+Avaliado por Carlos Augusto Moreira de Sousa
+
+Comentários de feedback	
+Faltou avaliar a igualdade de variâncias e normalidade na letra A do exercício.
+Tarefa 2, letra A, mães fumantes e não fumantes:
+1 - Antes de realizar o teste T para amostras independentes é necessário testar a hipótese de igualdade das distribuições das variâncias entre mães fumantes e mães não fumantes, utilizando o teste F (ou outro equivalente). Por Default o teste considera as variâncias iguais, porém vocês não realizaram o teste.
+2 - O teste T é um teste paramétrico que apresenta pressupostos para sua realização, e o principal é o de normalidade da variável resposta (peso), nos dois grupos analisados. Para avaliar a normalidade dos dados deveria ser aplicado o teste de Shapiro-Wilk e/ou ainda deveria ser plotado o gráfico normal qqplot. 
+Os subgrupos de análise mudam quando consideramos diferentes variáveis de estratificação, fumantes ou hipertensas. Logo, os testes de suposição deveriam ser aplicados nas letras A e C do exercício.
+
+ 
